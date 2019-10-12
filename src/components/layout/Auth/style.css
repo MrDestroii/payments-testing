@@ -1,0 +1,16 @@
+.auth-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.auth-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-body .form-control:focus {
+  border-color: #ced4da;
+  box-shadow: none;
+}
