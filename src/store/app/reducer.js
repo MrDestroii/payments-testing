@@ -16,6 +16,13 @@ export default (state = initialState, action) => {
       }
     }
 
+    case types.SET_IS_INIT: {
+      return {
+        ...state,
+        isInit: action.payload,
+      }
+    }
+
     default:
       return state
   }

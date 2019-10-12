@@ -5,11 +5,13 @@ import { routerMiddleware, connectRouter } from 'connected-react-router'
 import { createHashHistory as createHistory } from 'history'
 
 import appReducer from 'store/app/reducer'
+import appSaga from 'store/app/saga'
 
 import authReducer from 'store/auth/reducer'
 import authSaga from 'store/auth/saga'
 
 import userReducer from 'store/user/reducer'
+import userSaga from 'store/user/saga'
 
 const history = createHistory()
 
@@ -30,5 +32,7 @@ const store = applyMiddleware(...middleware)(createStore)(
 )
 
 sagaMiddleware.run(authSaga)
+sagaMiddleware.run(appSaga)
+sagaMiddleware.run(userSaga)
 
 export { store, history }

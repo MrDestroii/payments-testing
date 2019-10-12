@@ -20,8 +20,16 @@ function* login(action) {
   }
 }
 
+function* logout() {
+  yield call(removeAccessToken)
+  yield call(removeUserId)
+  yield put(appActions.setIsLogged(false))
+  yield put(appActions.setIsInit(false))
+}
+
 function* authSaga() {
   yield takeEvery(types.SIGN_IN, login)
+  yield takeEvery(types.LOGOUT, logout)
 }
 
 export default authSaga

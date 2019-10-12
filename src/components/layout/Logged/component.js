@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 
 import { Spinner } from 'react-bootstrap'
 
+import Header from 'components/layout/Logged/Header'
+
 import './style.css'
 
 const renderLoadingApp = () => {
@@ -14,9 +16,17 @@ const renderLoadingApp = () => {
 }
 
 const Logged = props => {
-  const { isInitApp } = props
+  const { isInitApp, appActions } = props
+
+  if (!isInitApp) {
+    appActions.initApp()
+  }
+
   return isInitApp ? (
-    <div>LoggedApp</div>
+    <div className="logged-app-wrapper">
+      <Header />
+      LoggedApp
+    </div>
   ) : renderLoadingApp()
 }
 
