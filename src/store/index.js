@@ -13,6 +13,9 @@ import authSaga from 'store/auth/saga'
 import userReducer from 'store/user/reducer'
 import userSaga from 'store/user/saga'
 
+import paymentReducer from 'store/payment/reducer'
+import paymentSaga from 'store/payment/saga'
+
 const history = createHistory()
 
 const sagaMiddleware = createSagaMiddleware()
@@ -24,6 +27,7 @@ const reducers = combineReducers({
   auth: authReducer,
   app: appReducer,
   user: userReducer,
+  payment: paymentReducer
 })
 
 const store = applyMiddleware(...middleware)(createStore)(
@@ -34,5 +38,6 @@ const store = applyMiddleware(...middleware)(createStore)(
 sagaMiddleware.run(authSaga)
 sagaMiddleware.run(appSaga)
 sagaMiddleware.run(userSaga)
+sagaMiddleware.run(paymentSaga)
 
 export { store, history }

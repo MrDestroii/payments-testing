@@ -1,7 +1,7 @@
 import { put, takeEvery, call } from 'redux-saga/effects'
 
 import {
-  setAccessToken, removeAccessToken, setUserId, removeUserId, getUserId,
+  setAccessToken, removeAccessToken, setUserId, removeUserId,
 } from 'helpers/app'
 import api from 'utils/api'
 

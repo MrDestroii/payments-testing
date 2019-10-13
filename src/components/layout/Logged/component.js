@@ -4,6 +4,8 @@ import PropTypes from 'prop-types'
 import { Spinner } from 'react-bootstrap'
 
 import Header from 'components/layout/Logged/Header'
+import CreatePayment from 'components/payment/Create'
+import ListPayment from 'components/payment/List'
 
 import './style.css'
 
@@ -26,6 +28,8 @@ const Logged = props => {
     <div className="logged-app-wrapper">
       <Header />
       LoggedApp
+      <CreatePayment />
+      <ListPayment />
     </div>
   ) : renderLoadingApp()
 }
