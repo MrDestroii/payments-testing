@@ -1,3 +1,5 @@
+import * as R from 'ramda'
+
 import types from './types'
 
 const initialState = {
@@ -32,6 +34,14 @@ export default (state = initialState, action) => {
       return {
         ...state,
         statuses: action.payload,
+      }
+    }
+
+    case types.CREATE_PAYMENT_SUCCESS: {
+      const addingNewPaymentList = R.append(action.payload)(state.list)
+      return {
+        ...state,
+        list: addingNewPaymentList,
       }
     }
 

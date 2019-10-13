@@ -1,15 +1,19 @@
-import { put, takeEvery } from 'redux-saga/effects'
+import { put, takeEvery, select } from 'redux-saga/effects'
 
 import api from 'utils/api'
 
 import paymentActions from 'store/payment/actions'
+import userActions from 'store/user/actions'
+import userSelectors from 'store/user/selectors'
 
 import types from './types'
 
 function* createPayment(action) {
   try {
+    const accountBalance = yield select(state => userSelectors.getAccountValueByField(state)('balance'))
     const result = yield api.post('/payment', action.payload)
-    console.log(result)
+    yield put(paymentActions.createPaymentSuccess(result))
+    yield put(userActions.setAccountBalance(accountBalance - result.price))
   } catch(error) {
 
   }

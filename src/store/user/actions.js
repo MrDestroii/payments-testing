@@ -13,5 +13,10 @@ export default {
   getAccountFailure: error => ({
     type: types.GET_ACCOUNT_FAILURE,
     payload: error,
+  }),
+
+  setAccountBalance: value => ({
+    type: types.SET_ACCOUNT_BALANCE,
+    payload: value,
   })
 }

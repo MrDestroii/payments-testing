@@ -13,6 +13,16 @@ export default (state = initialState, action) => {
       }
     }
 
+    case types.SET_ACCOUNT_BALANCE: {
+      return {
+        ...state,
+        account: {
+          ...state.account,
+          balance: action.payload,
+        }
+      }
+    }
+
     default:
       return state
   }
