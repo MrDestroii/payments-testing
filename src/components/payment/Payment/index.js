@@ -1,9 +1,12 @@
-import { connect } from 'react-redux'
+import { connect } from "react-redux"
+import { withRouter } from "react-router"
 
-import Component from './component'
+import routerSelectors from 'store/router/selectors'
 
-const mapStateToProps = state => ({})
+import Component from "./component"
 
-export default connect(
-  mapStateToProps,
-)(Component)
+const mapStateToProps = (state, props) => ({
+  id: routerSelectors.getPropByName(props)('id')
+})
+
+export default withRouter(connect(mapStateToProps)(Component))
