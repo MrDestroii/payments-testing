@@ -27,7 +27,6 @@ const Logged = props => {
   return isInitApp ? (
     <div className="logged-app-wrapper">
       <Header />
-      LoggedApp
       <CreatePayment />
       <ListPayment />
     </div>

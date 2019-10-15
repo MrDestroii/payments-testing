@@ -17,6 +17,7 @@ const mapStateToProps = state => ({
   requisites: paymentSelectors.getValueCreateDataByField(state)('requisites'),
   statuses: paymentSelectors.getStatuses(state),
   userId: userSelectors.getAccountValueByField(state)('id'),
+  balance: userSelectors.getAccountValueByField(state)('balance')
 })
 
 const mapDispatchToProps = dispatch => ({

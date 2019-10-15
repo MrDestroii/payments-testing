@@ -2,6 +2,8 @@ import React from 'react'
 
 import * as R from 'ramda'
 
+import ErrorMessages from '../ErrorMessages'
+
 import { Form } from 'react-bootstrap'
 
 const createObjFromItem = (item, key) => ({
@@ -10,7 +12,7 @@ const createObjFromItem = (item, key) => ({
 })
 
 const RadiosStatuses = props => {
-  const { items, onClickRadio, currentValue } = props
+  const { items, onClickRadio, currentValue, validationResult } = props
 
   const tranformingItems = R.compose(R.values, R.mapObjIndexed(createObjFromItem))(items)
 
@@ -30,6 +32,7 @@ const RadiosStatuses = props => {
     <Form.Group>
       <Form.Label>Статус</Form.Label>
       {R.map(renderRadio)(tranformingItems)}
+      <ErrorMessages validationResult={validationResult} />
     </Form.Group>
   )
 }
