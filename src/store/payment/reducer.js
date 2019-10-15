@@ -8,6 +8,24 @@ const initialState = {
   },
   list: [],
   statuses: {},
+  filter: {
+    status: [],
+  },
+  sorting: {
+    column: null,
+    type: null
+  }
+}
+
+const typeCalc = (currentType, { prevColumn, newColumn}) => {
+  switch(currentType) {
+    case 'asc':
+      return R.equals(prevColumn, newColumn) ? 'desc' : 'asc'
+    case 'desc':
+      return 'asc'
+    default:
+      return 'asc';
+  }
 }
 
 export default (state = initialState, action) => {
@@ -20,6 +38,32 @@ export default (state = initialState, action) => {
           ...state.create,
           [field]: value,
         }
+      }
+    }
+
+    case types.SET_FILTER_DATA: {
+      const { field, value } = action.payload
+      return {
+        ...state,
+        filter: {
+          ...state.filter,
+          [field]: value,
+        }
+      }
+    }
+
+    case types.SET_SORTING: {
+      const newColumn = action.payload
+      const type = typeCalc(state.sorting.type, {
+        prevColumn: state.sorting.column,
+        newColumn
+      })
+      return {
+        ...state,
+        sorting: {
+          column: newColumn,
+          type,
+        },
       }
     }
 

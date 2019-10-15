@@ -48,6 +48,16 @@ export default {
   getPaymentsFailure: error => ({
     type: types.GET_PAYMENTS_FAILURE,
     payload: error
-  })
+  }),
+
+  setFilterData: (field, value) => ({
+    type: types.SET_FILTER_DATA,
+    payload: { field, value }
+  }),
+
+  setSorting: column => ({
+    type: types.SET_SORTING,
+    payload: column,
+  }),
 
 }

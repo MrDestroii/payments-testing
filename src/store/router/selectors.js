@@ -1,6 +1,5 @@
 import { createSelector } from 'reselect'
 import * as R from 'ramda'
-import _ from 'lodash'
 
 const getState = state => R.defaultTo({})(R.prop('router', state))
 

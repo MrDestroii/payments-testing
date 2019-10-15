@@ -6,15 +6,10 @@ import ErrorMessages from '../ErrorMessages'
 
 import { Form } from 'react-bootstrap'
 
-const createObjFromItem = (item, key) => ({
-  value: key,
-  title: item,
-})
+import tranformingStatuses from 'helpers/statuses'
 
 const RadiosStatuses = props => {
   const { items, onClickRadio, currentValue, validationResult } = props
-
-  const tranformingItems = R.compose(R.values, R.mapObjIndexed(createObjFromItem))(items)
 
   const renderRadio = item => {
     return (
@@ -31,7 +26,7 @@ const RadiosStatuses = props => {
   return (
     <Form.Group>
       <Form.Label>Статус</Form.Label>
-      {R.map(renderRadio)(tranformingItems)}
+      {R.map(renderRadio)(tranformingStatuses(items))}
       <ErrorMessages validationResult={validationResult} />
     </Form.Group>
   )
