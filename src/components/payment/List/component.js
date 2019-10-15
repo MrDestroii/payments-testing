@@ -1,12 +1,14 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 
 import * as R from 'ramda'
 
 import { Table, Col } from 'react-bootstrap'
 
-const renderItemBody = item => {
+import './style.css'
+
+const renderItemBody = onClick => item => {
   return (
-    <tr key={item.id}>
+    <tr key={item.id} onClick={onClick(item.id)} className="payment-item">
       <th>{item.name}</th>
       <th>{item.comment}</th>
       <th>{item.date}</th>
@@ -18,7 +20,12 @@ const renderItemBody = item => {
 }
 
 const ListPayment = props => {
-  const { items } = props
+  const { items, routerActions } = props
+
+  const handleOnClickItem = useCallback(id => () => {
+    routerActions.push(`/payment/${id}`)
+  }, [routerActions])
+
   return (
     <Col sm="6" className="mt-2">
       <Table striped bordered hover>
@@ -33,7 +40,7 @@ const ListPayment = props => {
           </tr>
         </thead>
         <tbody>
-          {R.map(renderItemBody)(items)}
+          {R.map(renderItemBody(handleOnClickItem))(items)}
         </tbody>
       </Table>
     </Col>

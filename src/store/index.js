@@ -4,6 +4,8 @@ import createSagaMiddleware from 'redux-saga'
 import { routerMiddleware, connectRouter } from 'connected-react-router'
 import { createHashHistory as createHistory } from 'history'
 
+import routerSaga from 'store/router/saga'
+
 import appReducer from 'store/app/reducer'
 import appSaga from 'store/app/saga'
 
@@ -39,5 +41,6 @@ sagaMiddleware.run(authSaga)
 sagaMiddleware.run(appSaga)
 sagaMiddleware.run(userSaga)
 sagaMiddleware.run(paymentSaga)
+sagaMiddleware.run(routerSaga)
 
 export { store, history }

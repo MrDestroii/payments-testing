@@ -1,8 +1,11 @@
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 
 import * as R from 'ramda'
 
 import paymentSelectors from 'store/payment/selectors'
+
+import routerActions from 'store/router/actions'
 
 import Component from './component'
 
@@ -22,6 +25,11 @@ const mapStateToProps = state => {
   }
 }
 
+const mapDispatchToProps = dispatch => ({
+  routerActions: bindActionCreators(routerActions, dispatch)
+})
+
 export default connect(
   mapStateToProps,
+  mapDispatchToProps,
 )(Component)

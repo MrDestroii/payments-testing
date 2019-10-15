@@ -1,11 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import {Switch, Route} from'react-router'
+
 import { Spinner } from 'react-bootstrap'
 
 import Header from 'components/layout/Logged/Header'
 import CreatePayment from 'components/payment/Create'
 import ListPayment from 'components/payment/List'
+import Payment from 'components/payment/Payment'
 
 import './style.css'
 
@@ -27,8 +30,15 @@ const Logged = props => {
   return isInitApp ? (
     <div className="logged-app-wrapper">
       <Header />
-      <CreatePayment />
-      <ListPayment />
+      <Switch>
+        <Route path="/" exact>
+          <CreatePayment />
+          <ListPayment />
+        </Route>
+        <Route path="/payment/:id">
+          <Payment />
+        </Route>
+      </Switch>
     </div>
   ) : renderLoadingApp()
 }
