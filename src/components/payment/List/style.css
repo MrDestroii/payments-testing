@@ -1,0 +1,24 @@
+.payment-item {
+  cursor: pointer;
+}
+
+.payment-table-head-item {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.icons-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.arrow-icon {
+  height: 12px;
+  padding: 0 1rem;
+}
+
+.arrow-reverce {
+  transform: rotate(180deg);
+}

@@ -1,3 +1,6 @@
 export default {
   SET_IS_LOGGED: 'APP_SET_IS_LOGGED',
+
+  INIT_APP: 'APP_INIT',
+  SET_IS_INIT: 'APP_SET_IS_INIT',
 }

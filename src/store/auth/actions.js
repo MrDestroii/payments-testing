@@ -9,5 +9,9 @@ export default {
   signIn: data => ({
     type: types.SIGN_IN,
     payload: data,
+  }),
+
+  logout: () => ({
+    type: types.LOGOUT,
   })
 }
